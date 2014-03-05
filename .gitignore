@@ -1,0 +1,9 @@
+build
+.lock-waf_darwin_build
+node_modules
+pebble-js-app.js
+*.sublime-project
+*.sublime-workspace
+src/bundle
+temp
+reports
