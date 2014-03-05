@@ -1,0 +1,23 @@
+{
+  "name": "PebbleBootstrap",
+  "version": "1.0.0",
+  "description": "A Bootstap Project for Pebble watch projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/magicmoose/PebbleBootstrap.git"
+  },
+  "keywords": [
+    "Pebble",
+    "Bootstrap"
+  ],
+  "author": "Ralf Mueller",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/magicmoose/PebbleBootstrap/issues"
+  },
+  "homepage": "https://github.com/magicmoose/PebbleBootstrap"
+}
