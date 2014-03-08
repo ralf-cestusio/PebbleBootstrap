@@ -25,6 +25,9 @@ You are ready to go:
 * Minification
   For release targets javascript is going to be minified. So your pebble package stays small
 
+* Unittests
+  Support for jasmine unittests. See code for some examples in javascript and literate coffeescript
+  
 * Watch
   `grunt watch` lints, runs unit tests and builds whenever you change a file
 
