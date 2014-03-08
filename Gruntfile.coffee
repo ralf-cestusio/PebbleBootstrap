@@ -25,7 +25,14 @@ module.exports = (grunt) ->
                         'phone': '192.168.1.3'
                         'logs': ''
                 
-      
+        copy:
+            pebbleWscript:
+                src: pkg.name+'/wscript'
+                dest: 'wscript'
+            pebbleAppinfo:
+                src: pkg.name+'/appinfo.json'
+                dest: 'appinfo.json'
+    
         jasmine_node_lite:
             options:
                 consoleReporter: 
@@ -101,6 +108,8 @@ module.exports = (grunt) ->
                     mangle: true
 
         exec:
+            makePebbleProject:
+                cmd:  () -> 'pebble new-project '+ pkg.name 
             debug:
                 cmd: 'waf configure -d'
             release:
@@ -121,6 +130,7 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks('grunt-contrib-uglify')
     grunt.loadNpmTasks('grunt-exec')
     grunt.loadNpmTasks('grunt-config')
+    grunt.loadNpmTasks('grunt-contrib-copy')
 
 
     # Tasks
@@ -134,5 +144,5 @@ module.exports = (grunt) ->
         'exec:release','exec:build'])
     grunt.registerTask('debug',['config:debug','jshint','jasmine_node_lite:dev',
         'todos:build','browserify:debug',
-        'exec:debug','exec:build','deploy'])
+        'exec:debug','exec:build','exec:deploy'])
     grunt.registerTask('release',['config:release','ci','exec:deploy'])
