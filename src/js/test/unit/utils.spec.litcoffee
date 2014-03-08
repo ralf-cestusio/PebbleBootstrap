@@ -26,4 +26,3 @@ Utils
                 orig = 'aHR0cDovL2FiYzEyMy5jb20vYmxhaA==';
                 expect(utils.base64Decode(orig)).toBe('http://abc123.com/blah')
     
-});

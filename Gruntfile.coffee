@@ -97,6 +97,7 @@ module.exports = (grunt) ->
             tasks: ['jshint','jasmine_node_lite:dev','browserify:debug','exec:debug','exec:build']
             options: 
                 interrupt: false
+                atBegin:true
             
         browserify:
             debug:
