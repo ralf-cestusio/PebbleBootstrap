@@ -26,13 +26,18 @@ module.exports = (grunt) ->
                         'logs': ''
                 
         copy:
-            pebbleWscript:
-                src: pkg.name+'/wscript'
-                dest: 'wscript'
             pebbleAppinfo:
                 src: pkg.name+'/appinfo.json'
                 dest: 'appinfo.json'
-    
+            peebleApp:
+                src: 'PebbleBootstrap_Template.c'
+                dest: 'src/'+pkg.name+'.c'
+
+        clean:
+            bootstrap: [pkg.name]
+            debug: ['build', 'temp', 'reports','src/pebblejs']
+            release: ['build', 'temp', 'reports','src/pebblejs']
+
         jasmine_node_lite:
             options:
                 consoleReporter: 
@@ -131,6 +136,7 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks('grunt-exec')
     grunt.loadNpmTasks('grunt-config')
     grunt.loadNpmTasks('grunt-contrib-copy')
+    grunt.loadNpmTasks('grunt-contrib-clean')
 
 
     # Tasks
@@ -142,7 +148,8 @@ module.exports = (grunt) ->
     grunt.registerTask('ci',['jshint','jasmine_node_lite:ci',
         'todos:build','browserify:release','uglify:release',
         'exec:release','exec:build'])
-    grunt.registerTask('debug',['config:debug','jshint','jasmine_node_lite:dev',
+    grunt.registerTask('debug',['config:debug','clean:release','jshint','jasmine_node_lite:dev',
         'todos:build','browserify:debug',
         'exec:debug','exec:build','exec:deploy'])
-    grunt.registerTask('release',['config:release','ci','exec:deploy'])
+    grunt.registerTask('release',['config:release','clean:release','ci','exec:deploy'])
+    grunt.registerTask('bootstrap', ['exec:makePebbleProject', 'copy','clean:bootstrap'])

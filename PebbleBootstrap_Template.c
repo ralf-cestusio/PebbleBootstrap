@@ -1,4 +1,5 @@
 #include <pebble.h>
+#include <libs/pebble_assist.h>
 
 static Window *window;
 static TextLayer *text_layer;
@@ -53,7 +54,7 @@ static void deinit(void) {
 int main(void) {
   init();
 
-  APP_LOG(APP_LOG_LEVEL_DEBUG, "Done initializing, pushed window: %p", window);
+  LOG("Done initializing, pushed window: %p", window);
 
   app_event_loop();
   deinit();
